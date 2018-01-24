@@ -5,7 +5,7 @@ import MovieController from './controllers/movie.controller';
 
 const router = express.Router();
 
-router.route('')
+router.route('/')
 
     /** GET /api/movie - return movies lsit */
     .get(MovieController.list)

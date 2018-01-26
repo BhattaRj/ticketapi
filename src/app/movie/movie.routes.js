@@ -1,5 +1,3 @@
-
-
 import express from 'express';
 import MovieController from './controllers/movie.controller';
 
@@ -12,6 +10,15 @@ router.route('/')
 
     /** POST /api/movie - create movie  */
     .post(MovieController.create);
+
+router.route('/:movieId')
+
+
+    /** PUT /api/movie/movieid - update movie  */
+    .put(MovieController.update)
+
+    /** DELETE /api/movie/movieId - delete movie */
+    .delete(MovieController.remove);
 
 
 export default router;

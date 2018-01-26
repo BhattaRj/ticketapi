@@ -31,6 +31,10 @@ app.use(bodyParser.json())
 
 app.use('/api', routes);
 
+
+// Error
+
+
 app.get('/', (req, res) => {
     res.send('Hello World!');
 });

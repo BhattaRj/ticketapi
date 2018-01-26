@@ -10,6 +10,10 @@ var movieSchema = new Schema({
         type: String,
         required: false
     },
+    isDelete: {
+        type: Boolean,
+        default: false
+    }
 });
 
 export default mongoose.model('Movie', movieSchema);

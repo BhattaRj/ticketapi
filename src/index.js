@@ -9,6 +9,8 @@ import routes from './app/index.route';
 
 const app = express()
 
+
+
 mongoose.connect(config.mongohost);
 
 var db = mongoose.connection;

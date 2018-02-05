@@ -1,12 +1,14 @@
 import express from 'express';
 import MovieController from './controllers/movie.controller';
+import jwt from 'express-jwt';
+import config from './../../cofig/config';
 
 const router = express.Router();
 
 router.route('/')
 
     /** GET /api/movie - return movies lsit */
-    .get(MovieController.list)
+    .get(jwt({ secret: config.secret_key }), MovieController.list)
 
     /** POST /api/movie - create movie  */
     .post(MovieController.create);

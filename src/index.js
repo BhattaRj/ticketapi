@@ -31,15 +31,21 @@ app.use(bodyParser.urlencoded({ extended: false }))
 // parse application/json
 app.use(bodyParser.json())
 
+
+
 app.use('/api', routes);
 
 
 // Error
 
 
-app.get('/', (req, res) => {
-    res.send('Hello World!');
-});
+app.use((err, req, res, next) => {
+
+    res.status(err.status || 500).json({
+        msg: err.message,        
+        stack: err.stack,
+    })
+})
 
 
 app.listen(3000, () => console.log('Example app listening on port 3000!'))

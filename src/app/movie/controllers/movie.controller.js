@@ -14,6 +14,8 @@ function create(req, res, next) {
         movie.title = req.body.title;
     if (req.body.language)
         movie.language = req.body.language
+    if (req.body.poster)
+        movie.poster = req.body.poster;
 
     movie.save()
         .then(movie => res.json(movie))
@@ -69,7 +71,9 @@ function update(req, res, next) {
                 movie.title = req.body.title;
             if (req.body.language)
                 movie.language = req.body.language;
-
+            if (req.body.poster)
+                movie.poster = req.body.poster;
+                
             return movie.save();
         })
         .then(movie => {

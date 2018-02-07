@@ -13,6 +13,10 @@ var movieSchema = new Schema({
     isDelete: {
         type: Boolean,
         default: false
+    },
+    poster: {
+        type: String,
+
     }
 });
 

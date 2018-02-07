@@ -4,6 +4,10 @@ import mongoose from 'mongoose';
 import cors from 'cors';
 import bodyParser from 'body-parser';
 
+import multer from 'multer';
+
+var DIR = 'uploads/';
+
 import config from './cofig/config';
 import routes from './app/index.route';
 
@@ -31,14 +35,15 @@ app.use(bodyParser.urlencoded({ extended: false }))
 // parse application/json
 app.use(bodyParser.json())
 
+var upload = multer({ dest: DIR });
 
+app.post('/api/file-upload', upload.single('file'), function (req, res, next) {
+    res.json(req.file);
+});
 
 app.use('/api', routes);
 
-
 // Error
-
-
 app.use((err, req, res, next) => {
 
     res.status(err.status || 500).json({

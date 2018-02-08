@@ -11,7 +11,7 @@ router.route('/')
     .get(jwt({ secret: config.secret_key }), MovieController.list)
 
     /** POST /api/movie - create movie  */
-    .post(MovieController.create);
+    .post(jwt({ secret: config.secret_key }), MovieController.create);
 
 router.route('/:movieId')
 

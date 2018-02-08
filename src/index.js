@@ -35,11 +35,7 @@ app.use(bodyParser.urlencoded({ extended: false }))
 // parse application/json
 app.use(bodyParser.json())
 
-var upload = multer({ dest: DIR });
-
-app.post('/api/file-upload', upload.single('file'), function (req, res, next) {
-    res.json(req.file);
-});
+app.use(express.static('uploads'));
 
 app.use('/api', routes);
 

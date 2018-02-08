@@ -1,4 +1,8 @@
 
 
-- Revision 
-- Complete CRUD 
+- CRUD.
+- jwt-permission
+- directive .
+- socket. 
+- email.
+

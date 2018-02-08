@@ -10,6 +10,7 @@ import Movie from './../models/movie.model';
 function create(req, res, next) {
 
     let movie = new Movie();
+    movie.createdBy = req.user._id;
     if (req.body.title)
         movie.title = req.body.title;
     if (req.body.language)
@@ -34,6 +35,8 @@ function list(req, res, next) {
     let query = { isDelete: false };
 
     Movie.find(query)
+        .sort({ createdAt: 1 })
+        .populate('createdBy')
         .then(movies => res.json(movies))
         .catch(e => res.json(e));
 }
@@ -73,7 +76,7 @@ function update(req, res, next) {
                 movie.language = req.body.language;
             if (req.body.poster)
                 movie.poster = req.body.poster;
-                
+
             return movie.save();
         })
         .then(movie => {

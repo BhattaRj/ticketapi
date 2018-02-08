@@ -17,7 +17,14 @@ var movieSchema = new Schema({
     poster: {
         type: String,
 
+    },
+    createdBy: {
+        type: Schema.Types.ObjectId,
+        ref: 'User',
+        required: true,
     }
-});
+}, {
+        timestamps: true,
+    });
 
 export default mongoose.model('Movie', movieSchema);

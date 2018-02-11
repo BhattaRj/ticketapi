@@ -3,7 +3,7 @@ import express from 'express';
 import mongoose from 'mongoose';
 import cors from 'cors';
 import bodyParser from 'body-parser';
-
+import morgan from 'morgan';
 import multer from 'multer';
 
 var DIR = 'uploads/';
@@ -28,7 +28,7 @@ db.once('open', function () {
 });
 
 app.use(cors());
-
+app.use(morgan('combined'));
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }))
 
@@ -43,7 +43,7 @@ app.use('/api', routes);
 app.use((err, req, res, next) => {
 
     res.status(err.status || 500).json({
-        msg: err.message,        
+        msg: err.message,
         stack: err.stack,
     })
 })

@@ -43,11 +43,28 @@ function login(req, res, next) {
                 return next(new Error('Worng password'));
             }
 
+            let permissions=[];
+            
+            if(user.userType==1){
+                permissions=['user']
+            }
+
+            if(user.userType==2){
+                permissions=['theaterAdmin']
+                
+            }
+
+            if(user.userType==3){
+                permissions=['superAdmin','theaterAdmin']
+                
+            }
+
             const token = jwt.sign(
                 {
                     _id: user._id,
                     name: user.name,
-                    email: user.email
+                    email: user.email,
+                    permissions:permissions
                 },
                 config.secret_key);
 

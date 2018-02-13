@@ -17,6 +17,10 @@ const userSchema = new Schema({
     password: {
         type: String,
         required: true
+    },
+    userType: {
+        type: Number,
+        default: 1,    // 1- User , 2-TheaterAdmin 3-Super Admin.
     }
 });
 

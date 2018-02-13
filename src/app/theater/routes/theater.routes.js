@@ -4,12 +4,15 @@ import jwt from 'express-jwt';
 import config from './../../../cofig/config';
 import TheaterController from './../controllers/theater.controller';
 
+var guard = require('express-jwt-permissions')()
+
+
 const router = express.Router();
 
 router.route('/')
 
     /** GET - api/theate - create theater  */
-    .get(TheaterController.list)
+    .get(jwt({ secret: config.secret_key }), guard.check('theaterAdmin'), TheaterController.list, )
 
     /** POST - /api/theater - list theaters  */
     .post(jwt({ secret: config.secret_key }), TheaterController.list);

@@ -12,15 +12,15 @@ const router = express.Router();
 router.route('/:id')
 
     /** POST - /api/theater - list theaters  */
-    .post( AudiController.create);
+    .post(AudiController.create);
 
 
-// router.route('/:id')
+router.route('/:id/:audiId')
 
-//     /** PUT - api/theater -update */
-//     .put(jwt({ secret: config.secret_key }), AudiController.update)
+    /** PUT - api/theater -update */
+    .put(jwt({ secret: config.secret_key }), AudiController.update)
 
-//     /** DELETE - api/theater - remove theater */
-//     .delete(jwt({ secret: config.secret_key }), AudiController.remove);
+    /** DELETE - api/theater - remove theater */
+    .delete(jwt({ secret: config.secret_key }), AudiController.remove);
 
 export default router;

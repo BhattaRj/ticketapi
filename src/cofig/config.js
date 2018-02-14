@@ -1,7 +1,7 @@
 
 
 const config = {
-    mongohost: 'mongodb://rj:rj@cluster0-shard-00-00-ckkbh.mongodb.net:27017,cluster0-shard-00-01-ckkbh.mongodb.net:27017,cluster0-shard-00-02-ckkbh.mongodb.net:27017/rj?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin',
+    mongohost: 'mongodb+srv://rj:rj@cluster0-ckkbh.mongodb.net/test',
     secret_key: 'sdfsdfsfsdfsdfsdfsdfsdfsdd'
 
 }

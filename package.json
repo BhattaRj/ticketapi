@@ -2,17 +2,18 @@
   "name": "circleapi",
   "version": "1.0.0",
   "description": "",
-  "main": "dist/index.js",
+  "main": "index.js",
   "scripts": {
-    "start":"dist/index.js",
+    "build": "rimraf dist/ && babel ./ --out-dir dist/ --ignore ./node_modules,./.babelrc,./package.json,./npm-debug.log --copy-files",
+    "start": "npm run build && node dist/src/index.js",
     "watch": "babel -w src/ -d dist/",
-    "build": "babel src/ -d dist/",
     "serve": "babel -w src/ -d dist/ | nodemon --watch dist",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "babel-preset-stage-0": "^6.24.1",    
     "bcrypt": "^1.0.3",
     "body-parser": "^1.18.2",
     "cors": "^2.8.4",

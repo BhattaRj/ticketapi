@@ -15,7 +15,7 @@ const app = express()
 
 
 
-mongoose.connect('mongodb+srv://rj:rj@cluster0-ckkbh.mongodb.net/test');
+mongoose.connect(config.mongohost);
 
 var db = mongoose.connection;
 

@@ -38,7 +38,7 @@ var DIR = 'uploads/';
 
 var app = (0, _express2.default)();
 
-_mongoose2.default.connect('mongodb+srv://rj:rj@cluster0-ckkbh.mongodb.net/test');
+_mongoose2.default.connect(_config2.default.mongohost);
 
 var db = _mongoose2.default.connection;
 

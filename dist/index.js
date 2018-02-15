@@ -71,6 +71,6 @@ app.use(function (err, req, res, next) {
     });
 });
 
-app.listen(3000, function () {
+app.listen(process.env.PORT || 3000, function () {
     return console.log('Example app listening on port 3000!');
 });

@@ -15,8 +15,11 @@ function create(req, res, next) {
                 child.title = req.body.title;
             if (req.body.size)
                 child.size = req.body.size;
+
             loc.audi = theater.auditoriums.create(child);
+            
             theater.auditoriums.push(loc.audi);
+
             return theater.save();
         })
         .then(theater => {

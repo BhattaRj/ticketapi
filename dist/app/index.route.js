@@ -16,6 +16,10 @@ var _auth = require('./auth/auth.routes');
 
 var _auth2 = _interopRequireDefault(_auth);
 
+var _user = require('./auth/user.routes');
+
+var _user2 = _interopRequireDefault(_user);
+
 var _file = require('./file/file.route');
 
 var _file2 = _interopRequireDefault(_file);
@@ -27,6 +31,10 @@ var _theater2 = _interopRequireDefault(_theater);
 var _auditorium = require('./theater/routes/auditorium.routes');
 
 var _auditorium2 = _interopRequireDefault(_auditorium);
+
+var _show = require('./shows/show.routes');
+
+var _show2 = _interopRequireDefault(_show);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -40,8 +48,11 @@ router.route('/health-check').get(function (req, res, next) {
 
 router.use('/movie', _movie2.default);
 router.use('/auth', _auth2.default);
+router.use('/user', _user2.default);
+
 router.use('/file', _file2.default);
 router.use('/theater', _theater2.default);
 router.use('/autitorium', _auditorium2.default);
+router.use('/show', _show2.default);
 
 exports.default = router;

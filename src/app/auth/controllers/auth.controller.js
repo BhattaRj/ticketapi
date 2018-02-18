@@ -19,6 +19,10 @@ function register(req, res, next) {
     if (req.body.password)
         user.password = bcrypt.hashSync(req.body.password, 10);
 
+    if (req.body.email == config.adminEmail) {
+        user.userType = 3;
+    }
+
     user.save()
         .then(user => res.json(user))
         .catch(e => next(e));
@@ -43,20 +47,20 @@ function login(req, res, next) {
                 return next(new Error('Worng password'));
             }
 
-            let permissions=[];
-            
-            if(user.userType==1){
-                permissions=['user']
+            let permissions = [];
+
+            if (user.userType == 1) {
+                permissions = ['user']
             }
 
-            if(user.userType==2){
-                permissions=['theaterAdmin']
-                
+            if (user.userType == 2) {
+                permissions = ['theaterAdmin']
+
             }
 
-            if(user.userType==3){
-                permissions=['superAdmin','theaterAdmin']
-                
+            if (user.userType == 3) {
+                permissions = ['superAdmin', 'theaterAdmin']
+
             }
 
             const token = jwt.sign(
@@ -64,7 +68,7 @@ function login(req, res, next) {
                     _id: user._id,
                     name: user.name,
                     email: user.email,
-                    permissions:permissions
+                    permissions: permissions
                 },
                 config.secret_key);
 

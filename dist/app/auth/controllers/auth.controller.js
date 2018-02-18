@@ -35,6 +35,10 @@ function register(req, res, next) {
     if (req.body.email) user.email = req.body.email;
     if (req.body.password) user.password = _bcrypt2.default.hashSync(req.body.password, 10);
 
+    if (req.body.email == _config2.default.adminEmail) {
+        user.userType = 3;
+    }
+
     user.save().then(function (user) {
         return res.json(user);
     }).catch(function (e) {

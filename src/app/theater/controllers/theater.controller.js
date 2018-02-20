@@ -9,11 +9,22 @@ function list(req, res, next) {
         .catch(e => next(e));
 }
 
+function myList(req, res, next) {
+
+    let query = { isDeleted: false };
+
+    query.createdBy = req.user._id;
+
+    Theater.find(query)
+        .then(theaters => res.json(theaters))
+        .catch(e => next(e));
+}
+
 function create(req, res, next) {
 
     let theater = new Theater();
     theater.createdBy = req.user._id;
-    
+
     if (req.body.title)
         theater.title = req.body.title;
     if (req.body.address)
@@ -52,5 +63,6 @@ export default {
     list,
     create,
     update,
-    remove
+    remove,
+    myList
 }

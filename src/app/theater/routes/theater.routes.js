@@ -9,9 +9,15 @@ var guard = require('express-jwt-permissions')()
 
 const router = express.Router();
 
+router.route('/my-theater')
+
+    /** GEt - api/theater/my-theater  */
+    .get(jwt({ secret: config.secret_key }),TheaterController.myList);
+
+
 router.route('/')
 
-    /** GET - api/theate - create theater  */
+    /** GET - api/theater - create theater  */
     .get(TheaterController.list, )
 
     /** POST - /api/theater - list theaters  */
@@ -25,5 +31,6 @@ router.route('/:id')
 
     /** DELETE - api/theater - remove theater */
     .delete(jwt({ secret: config.secret_key }), TheaterController.remove);
+
 
 export default router;

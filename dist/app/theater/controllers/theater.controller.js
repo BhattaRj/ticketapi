@@ -20,6 +20,19 @@ function list(req, res, next) {
     });
 }
 
+function myList(req, res, next) {
+
+    var query = { isDeleted: false };
+
+    query.createdBy = req.user._id;
+
+    _theater2.default.find(query).then(function (theaters) {
+        return res.json(theaters);
+    }).catch(function (e) {
+        return next(e);
+    });
+}
+
 function create(req, res, next) {
 
     var theater = new _theater2.default();
@@ -62,5 +75,6 @@ exports.default = {
     list: list,
     create: create,
     update: update,
-    remove: remove
+    remove: remove,
+    myList: myList
 };

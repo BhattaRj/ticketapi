@@ -26,9 +26,14 @@ var guard = require('express-jwt-permissions')();
 
 var router = _express2.default.Router();
 
+router.route('/my-theater')
+
+/** GEt - api/theater/my-theater  */
+.get((0, _expressJwt2.default)({ secret: _config2.default.secret_key }), _theater2.default.myList);
+
 router.route('/')
 
-/** GET - api/theate - create theater  */
+/** GET - api/theater - create theater  */
 .get(_theater2.default.list)
 
 /** POST - /api/theater - list theaters  */
